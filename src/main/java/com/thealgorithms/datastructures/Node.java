@@ -3,30 +3,44 @@ package com.thealgorithms.datastructures;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Node<T> {
+    
+    //@ spec_public
+    private final /*@ nullable @*/ T value;
 
-    private final T value;
-    private final List<Node<T>> children;
+    private final /*@ nullable @*/ List<Node<T>> children;
 
-    public Node(final T value) {
+    //@ ensures \result == value;
+    public /*@ pure @*/ T getValue() {
+        return value;
+    }
+
+    //@ requires child != null;
+    // @ invariant child != null
+    public void addChild(Node<T> child) {
+        if (child != null) 
+        {
+            children.add(child);
+        } else {
+            
+        }
+    }
+
+    public /*@ pure @*/ List<Node<T>> getChildren() {
+        return children;
+    }
+
+    //@ ensures this.value == value;
+    public Node(final /*@ nullable @*/ T value) {
         this.value = value;
         this.children = new ArrayList<>();
     }
 
-    public Node(final T value, final List<Node<T>> children) {
+    //@ ensures this.value == value && getChildren().equals(children);
+    public Node(final /*@ nullable @*/ T value, final /*@ nullable @*/ List<Node<T>> children) {
         this.value = value;
         this.children = children;
-    }
-
-    public T getValue() {
-        return value;
-    }
-
-    public void addChild(Node<T> child) {
-        children.add(child);
-    }
-
-    public List<Node<T>> getChildren() {
-        return children;
+ 
     }
 }
