@@ -143,14 +143,14 @@ public class Area {
         return 3 * Math.PI * radius * radius;
     }
 
-    // @ ensures \result > 0; 
-    // @ ensures \result == Math.PI * radius * (radius + Math.pow(height * height + radius * radius, 0.5));
-    //@ requires radius > 0 && height > 0;
     //@ requires Double.isNaN(radius);
     //@ requires Double.isNaN(height);
     //@ ensures Double.isNaN(\result);
-    //@   requires height * height + radius == 0.0;
-    //@   ensures \result == 1.0;
+    //@ requires height * height + radius == 0.0;
+    //@ ensures \result == 1.0;
+    //@ requires radius > 0.0 && height > 0.0;
+    //@ ensures \result > 0;
+    //@ ensures \result == Math.PI * radius * (radius + Math.pow(height * height + radius * radius, 0.5));
     public static double surfaceAreaCone(final double radius, final double height) {
         if (radius <= 0) {
             throw new IllegalArgumentException(POSITIVE_RADIUS);
