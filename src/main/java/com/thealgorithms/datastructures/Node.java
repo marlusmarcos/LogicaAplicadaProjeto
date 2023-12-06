@@ -8,7 +8,7 @@ public class Node<T> {
     
     //@ spec_public
     private final /*@ nullable @*/ T value;
-
+    //@ spec_public
     private final /*@ nullable @*/ List<Node<T>> children;
 
     //@ ensures \result == value;
@@ -16,15 +16,10 @@ public class Node<T> {
         return value;
     }
 
-    //@ requires child != null;
-    // @ invariant child != null
+    // @ requires child != null;
+    //@ assignable children;
     public void addChild(Node<T> child) {
-        if (child != null) 
-        {
-            children.add(child);
-        } else {
-            
-        }
+        if (child != null)  children.add(child);
     }
 
     public /*@ pure @*/ List<Node<T>> getChildren() {
