@@ -18,8 +18,13 @@ public class Pow {
      * @param b the exponent.
      * @return the value {@code a}<sup>{@code b}</sup>.
      */
-    public static long pow(int a, int b) {
+    
+    
+    //@ requires a >= 0 && b >= 0;
+    //@ ensures \result == (\product int i; i >= 0 && i < b; a);
+    public static /*@ pure*/ long pow(int a, int b) {
         long result = 1;
+
         for (int i = 1; i <= b; i++) {
             result *= a;
         }
