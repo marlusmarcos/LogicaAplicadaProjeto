@@ -16,12 +16,17 @@ public class Node<T> {
         return value;
     }
 
-    // @ requires child != null;
-    //@ assignable children;
-    public void addChild(Node<T> child) {
+       
+
+    //@  requires child != null;
+    //@  ensures children.size() == \old(children.size())+1;
+    //@  requires child == null;
+    //@ signals (NullPointerException);
+    public void addChild( /*@ non_null */ Node<T>  child) {
         if (child != null)  children.add(child);
     }
 
+    //@ ensures \result == children;
     public /*@ pure @*/ List<Node<T>> getChildren() {
         return children;
     }
@@ -32,8 +37,8 @@ public class Node<T> {
         this.children = new ArrayList<>();
     }
 
-    //@ ensures this.value == value && getChildren().equals(children);
-    public Node(final /*@ nullable @*/ T value, final /*@ nullable @*/ List<Node<T>> children) {
+    //@ ensures this.value == value && this.children == children ;
+    public Node(final /*@ non_null @*/ T value, final /*@ non_null @*/ List<Node<T>> children) {
         this.value = value;
         this.children = children;
  
