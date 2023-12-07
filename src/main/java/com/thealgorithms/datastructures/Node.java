@@ -37,7 +37,10 @@ public class Node<T> {
         this.children = new ArrayList<>();
     }
 
+    //@ requires value != null && children != null;
     //@ ensures this.value == value && this.children == children ;
+    //@ requires value == null || children == null;
+    //@ signals (NullPointerException);
     public Node(final /*@ non_null @*/ T value, final /*@ non_null @*/ List<Node<T>> children) {
         this.value = value;
         this.children = children;
