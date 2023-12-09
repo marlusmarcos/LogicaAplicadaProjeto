@@ -11,8 +11,11 @@ public final class Floor {
      * @param number the number
      * @return the largest (closest to positive infinity) of given
      * {@code number}
-     */
-    public static double floor(double number) {
+     */    
+    //@ requires !Double.isNaN(number);  
+    //@ requires number > Integer.MIN_VALUE;
+    //@ ensures \result >= (double) number || \result == (int) number || \result == (int) number - 1;
+    public static /*@ pure*/ double floor(double number) {
         if (number - (int) number == 0) {
             return number;
         } else if (number - (int) number > 0) {

@@ -11,7 +11,7 @@ public class Ceil {
      */
 	//@ requires !Double.isNaN(number);
 	//@ ensures \result >= (double) number || \result == (int) number || \result == (int) number + 1;
-    public static double ceil(double number) {
+    public static /*@ pure @*/ double ceil(double number) {
         if (number - (int) number == 0) {
             return number;
         } else if (number - (int) number > 0) {
