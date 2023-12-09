@@ -13,6 +13,8 @@ public final class MinValue {
      * @return the smaller of {@code a} and {@code b}.
      */
     //@ requires true; 
+    //@ requires Integer.MIN_VALUE < a < Integer.MAX_VALUE;
+    //@ requires Integer.MIN_VALUE < b < Integer.MAX_VALUE;
     //@ ensures \result == a || \result == b;
     //@ ensures (\result == a && a <= b) || (\result == b && b < a);
     public static /*@ pure @*/ int min(int a, int b) {
