@@ -3,7 +3,7 @@ package com.thealgorithms.datastructures;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//@ nullable_by_default
 public class Node<T> {
     
     //@ spec_public
