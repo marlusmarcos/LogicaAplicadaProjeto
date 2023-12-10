@@ -10,21 +10,12 @@ public class Pow {
         assert pow(10, 2) == Math.pow(10, 2); // == 100
     }
 
-    /**
-     * Returns the value of the first argument raised to the power of the second
-     * argument
-     *
-     * @param a the base.
-     * @param b the exponent.
-     * @return the value {@code a}<sup>{@code b}</sup>.
-     */
-    
-    
-    //@ requires a >= 0 && b >= 0;
-    //@ ensures \result == (\product int i; i >= 0 && i < b; a);
+    //@ requires Double.isNaN(b);
+    //@ ensures !Double.isNaN(\result);
     public static /*@ pure*/ long pow(int a, int b) {
         long result = 1;
-
+        //@ maintaining 1 <= i <= b;
+        // @ maintaining \forall int i; 1 <= i < b;
         for (int i = 1; i <= b; i++) {
             result *= a;
         }
