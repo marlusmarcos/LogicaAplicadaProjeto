@@ -27,6 +27,7 @@ class BinarySearch implements SearchAlgorithm {
      * @param <T> is any comparable type
      * @return index of the element
      */
+    // @ ensures \result != null;
     @Override
     public <T extends Comparable<T>> int find(T[] array, T key) {
         return search(array, key, 0, array.length - 1);
