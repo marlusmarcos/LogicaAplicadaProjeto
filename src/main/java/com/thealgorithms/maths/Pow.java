@@ -10,8 +10,12 @@ public class Pow {
         assert pow(10, 2) == Math.pow(10, 2); // == 100
     }
 
-    //@ requires Double.isNaN(b);
-    //@ ensures !Double.isNaN(\result);
+    //@ requires 0 <= a < Integer.MAX_VALUE;
+    //@ requires 0 <= b < Integer.MAX_VALUE;
+    //@ ensures \result <= Long.MAX_VALUE;
+    //@ exceptional_behavior requires (b < 0);
+    //@ signals_only IllegalArgumentException;
+    //@ code_java_math
     public static /*@ pure*/ long pow(int a, int b) {
         long result = 1;
         //@ maintaining 1 <= i <= b;
