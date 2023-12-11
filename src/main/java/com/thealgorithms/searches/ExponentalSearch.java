@@ -28,7 +28,7 @@ class ExponentialSearch implements SearchAlgorithm {
         System.out.printf("Found by system method at an index: %d. Is equal: %b%n", toCheck, toCheck == atIndex);
     }
 
-    @Overridez
+    @Override
     public <T extends Comparable<T>> int find(T[] array, T key) {
         if (array[0] == key) {
             return 0;
