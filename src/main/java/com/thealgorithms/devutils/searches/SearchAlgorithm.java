@@ -1,6 +1,6 @@
 package com.thealgorithms.devutils.searches;
 
-
+/**
  * The common interface of most searching algorithms
  *
  * @author Podshivalov Nikita (https://github.com/nikitap492)
